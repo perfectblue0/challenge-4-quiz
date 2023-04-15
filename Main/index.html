@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-      <title>CSS Box Styling</title>
+      <title>QUIZ!!</title>
       <meta charset="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
@@ -9,17 +9,23 @@
     <body>
         <header>
          <div class="header">Timed Quiz Challenge!</div>
-         <button id="start-button">Start</button>   
         </header>
 
         <main>
+          <section>
           <div class="quiz">
             <div class="instruct">Try to answer the following questions correctly within the time limit. Keep in mind that any incorrect answers will penalize your score/time by ten seconds.
             </div>
-            <section>
-                
-            </section>
-          </div>
+            <button id="start-button">Start</button>
+          </div>  
+          </section>
+
+          <section>
+            <div id="quiz-quest"></div>
+            <div class="timer-text">100</div>
+            <h4>seconds remaining!</h4>
+          </section>
+          
 
         </main>
         <script src="assets/js/script.js"></script>

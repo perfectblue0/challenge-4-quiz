@@ -1,0 +1,55 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    font-family: monospace;
+    color:rgb(213, 86, 6);
+
+}
+
+header {
+    text-align: center;
+}
+
+/* styles the start page elements */
+
+.header {
+    font-size: 30px;
+    color: black;
+    font-weight: bold;
+    padding: 40px 10%;
+    width: 70%;
+}
+
+.quiz {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px 10%;
+    width: 70%;
+}
+
+.instruct {
+    text-align: center;
+    padding: 30px auto;
+    margin: 20px auto;
+}
+
+/* styles the start button during different states */
+
+button {
+    font-size: 20px;
+    letter-spacing: 2px;
+    font-weight: bold;
+    color: white;
+    background-color: rgb(64, 0, 128);
+    border-radius: 7px;
+    padding: 10px;
+    margin: 10px auto;
+}
+
+button:hover {
+    font-style: italic;
+    color: greenyellow;
+}
+
