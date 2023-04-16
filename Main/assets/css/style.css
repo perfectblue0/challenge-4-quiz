@@ -63,3 +63,13 @@ button:hover {
     justify-content: center;
     text-align: center;
 }
+
+
+
+#box-1.hide {
+    display: none;
+}
+
+#initial-page.hide {
+    display: none;
+}

@@ -51,3 +51,29 @@ const questions = [
     },
 
 ];
+
+var wordBlank = document.querySelector(".word-blanks");
+var win = document.querySelector(".win");
+var lose = document.querySelector(".lose");
+var timerElement = document.querySelector(".timer-count");
+var startButton = document.querySelector("#start-button");
+
+var numBlanks = 0;
+var winCounter = 0;
+var loseCounter = 0;
+var isWin = false;
+var timer;
+var timerCount;
+
+function gameStart() {
+    document.getElementById("start-button").click();
+    timerCount = 100;
+    startTimer();
+}
+
+// To do: add function to begin decreasing time
+
+startButton.addEventListener("click", function() {
+    document.querySelector("#box-1").setAttribute("class", "hide");
+    document.querySelector("#initial-page").setAttribute("class", "hide");
+});
