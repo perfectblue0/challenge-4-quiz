@@ -71,7 +71,7 @@ function gameStart() {
     startTimer();
 }
 
-// To do: add function to begin decreasing time
+// To do: add function declaration that decreases time
 
 startButton.addEventListener("click", function() {
     document.querySelector("#box-1").setAttribute("class", "hide");
@@ -79,5 +79,5 @@ startButton.addEventListener("click", function() {
     document.querySelector("#quiz-block").setAttribute("class", "");
     document.querySelector("#time-box").setAttribute("class", "");
 
-    
+    // to do: call function to begin decreasing time
 });
