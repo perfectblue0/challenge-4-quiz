@@ -57,7 +57,7 @@ button:hover {
 
 /* syles the seconds and seconds remaing text */
 
-.play-view {
+.time-box {
     display: flex;
     flex-direction: column;
     justify-content: center;
