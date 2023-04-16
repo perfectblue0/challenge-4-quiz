@@ -63,14 +63,6 @@ button:hover {
     padding-top: 50px;
 }
 
-/* syles the seconds and seconds remaing text */
-
-#time-box {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-}
 
 /* hides all the quiz elements on intial load */
 

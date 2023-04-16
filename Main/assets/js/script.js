@@ -77,7 +77,6 @@ startButton.addEventListener("click", function() {
     document.querySelector("#box-1").setAttribute("class", "hide");
     document.querySelector("#initial-page").setAttribute("class", "hide");
     document.querySelector("#quiz-block").setAttribute("class", "");
-    document.querySelector("#time-box").setAttribute("class", "");
 
     // to do: call function to begin decreasing time
 });
