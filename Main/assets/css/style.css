@@ -55,21 +55,26 @@ button:hover {
     color: greenyellow;
 }
 
+/* style the score block p element */
+
+#score-block {
+    display: flex;
+    justify-content: center;
+    padding-top: 50px;
+}
+
 /* syles the seconds and seconds remaing text */
 
-.time-box {
+#time-box {
     display: flex;
     flex-direction: column;
     justify-content: center;
     text-align: center;
 }
 
+/* hides all the quiz elements on intial load */
 
-
-#box-1.hide {
+.hide {
     display: none;
 }
 
-#initial-page.hide {
-    display: none;
-}
