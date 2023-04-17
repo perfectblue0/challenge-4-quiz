@@ -74,7 +74,9 @@ function gameStart() {
 // To do: add function declaration that decreases time
 
 function loadQuestions() {
-    var question = questions[]
+    var question = questions[questionIndex];
+    $('#quiz-block').children('h1').text(question.question);
+    $('#quiz-block').children('.answers').children().eq(0).text(question.answers[0]);
 }
 
 // function that hides elements and shows others on startbutton click
@@ -83,6 +85,8 @@ startButton.addEventListener("click", function() {
     document.querySelector("#box-1").setAttribute("class", "hide");
     document.querySelector("#initial-page").setAttribute("class", "hide");
     document.querySelector("#quiz-block").setAttribute("class", "");
+
+    loadQuestions();
 
     // to do: call function to begin decreasing time
 });
