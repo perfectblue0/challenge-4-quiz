@@ -1,4 +1,18 @@
-const questions = [
+// element variables
+
+var startButton = document.querySelector('#start-button');
+
+
+// global variables for functions
+
+var questionIndex;
+var score = 0;
+var timeLeft = 100;
+var highScores = [];
+
+// array of questions, answers, and correnct answer index
+
+var questions = [
     {
         question: "What is the capital of Aguascalientes, Mexico?",
         answers: [
@@ -52,41 +66,43 @@ const questions = [
 
 ];
 
-var wordBlank = document.querySelector(".word-blanks");
-var win = document.querySelector(".win");
-var lose = document.querySelector(".lose");
-var timerElement = document.querySelector(".timer-count");
-var startButton = document.querySelector("#start-button");
 
-var numBlanks = 0;
-var winCounter = 0;
-var loseCounter = 0;
-var isWin = false;
-var timer;
-var timerCount;
 
-function gameStart() {
-    document.getElementById("start-button").click();
-    timerCount = 100;
-    startTimer();
+function startGame() {
+    //timer function here
+    questionIndex = 0;
+    loadQuestions();
 }
 
-// To do: add function declaration that decreases time
+// functions:
 
+
+// To do: declare function declaration that decreases time
+
+
+// To do: function to show question
+
+// To do: function that shows next question
 function loadQuestions() {
-    var question = questions[questionIndex];
-    $('#quiz-block').children('h1').text(question.question);
-    $('#quiz-block').children('.answers').children().eq(0).text(question.answers[0]);
+    
 }
 
-// function that hides elements and shows others on startbutton click
+
+
+// event listeners:
+
+
+
+// event listener that calls function that hides elements and shows others on startbutton click
 
 startButton.addEventListener("click", function() {
     document.querySelector("#box-1").setAttribute("class", "hide");
     document.querySelector("#initial-page").setAttribute("class", "hide");
     document.querySelector("#quiz-block").setAttribute("class", "");
 
+    questionIndex = 0;
     loadQuestions();
+
 
     // to do: call function to begin decreasing time
 });
