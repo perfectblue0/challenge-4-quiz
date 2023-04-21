@@ -8,36 +8,31 @@
     <link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
   </head>
   <body>
+
+    <!--this has the score and the time-->
     <header id="initial-page">
-      <div class="header">Timed Quiz Challenge!</div>
+      <button id="scoreButton">Scores</button>
+      <span id="time">00</span>
     </header>
 
-    <main id ="main-challenge">
-    <!--this contains elements that will appear on load and dissappear once start button clicked-->
+    <!--this contains quesitons and possible answers-->
+    <main id ="challenge">
       <section id="box-1">
-        <div class="quiz">
-        <div class="instruct">Try to answer the following questions correctly within the time limit. Keep in mind that any incorrect answers will penalize your score/time by ten seconds.
-        </div>
-        <button id="start-button">Start</button>
-        </div>  
+        <div class="question"></div>
+        <div class="options"></div>
       </section>
       <!--on start button click the question and answers will appear and ime will begin to decrease by 1 second and will decrease by 10 seconds when wrong answer is clicked-->
-      <section id="quiz-block" class="hide">
-        <h1>Question text</h1>
-        <div class="answers">
-          <p>Answer 1</p>
-          <p>Answer 2</p>
-          <p>Answer 3</p>
-          <p>Answer 4</p>
-        </div>
-        <div id="timer-text">100</div>
+      <section id="begin">
+        <h1>Mexican State Capitals Challenge</h1>
+        <p>Try to answer the following questions correctly within the time limit. <br>Keep in mind that any incorrect answers will penalize your score/time by ten seconds.</p>
+        <button id="begin-btn">Start!</button>
       </section>
   
       <!--this will never dissapear and on click will display past scores-->
-      <section id="score-block">
-        <p>View High Scores</p>
-      </section>
-          
+      <div id="highScore">
+        <ol></ol>
+        <button id="again">Play Again?</button>
+      </div>    
 
     </main>
     <script src="assets/js/script.js"></script>
