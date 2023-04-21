@@ -58,7 +58,7 @@ var begin = document.querySelector("#begin");
 var beginBtn = document.querySelector("#begin-btn");
 var quiz = document.querySelector("#box-1");
 var score = document.querySelector("#highScore");
-var question = document.querySelector(".question");
+var quest = document.querySelector(".question");
 var options = document.querySelector(".options");
 //todo: result?
 var radioButton = document.querySelectorAll("input[name='option']");
@@ -86,9 +86,9 @@ function setTime() {
 // function to hide and show questions/options 
 
 function show() {
-    question.innerHTML = questions[count].question;
-    for(let i = 0; i < questions[count].answers.length; i++) {
-        answers.innerHTML += "<input type='radio' name='answer' value=' " + i + "'>" + questions[count].answers[i] + "<br>";
+    quest.innerHTML = questions[count].question;
+    for(var i = 0; i < questions[count].answers.length; i++) {
+        options.innerHTML += "<input type='radio' name='answer' value=' " + i + "'>" + questions[count].answers[i] + "<br>";
     }
 }
 
@@ -97,7 +97,7 @@ function show() {
 // functions to hide
 
 function hide() {
-    answers.innerHTML = "";
+    options.innerHTML = "";
 }
 
 // will be used to hide all elements and show scores once called
