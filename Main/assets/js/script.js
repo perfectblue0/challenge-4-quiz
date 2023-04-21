@@ -66,5 +66,43 @@ var radioButton = document.querySelectorAll("input[name='option']");
 var scoreBtn = document.querySelector("#highScore");
 var playAgain = document.querySelector("#again");
 
+var count = 0;
+var time = 50;
+
+// todo: timer that counts down and clears when game ends
+
+function time() {
+    var strTime = setInterval(function() {
+        time--;
+        document.querySelector("#time").innerHTML = time;
+        if(time === 0) {
+            document.querySelector("#time").innerHTML = "00";
+            clearInterval(strTime);
+            // change to end screen with function
+        }
+    }, 1000);
+}
+
+// function to hide and show questions/options
+
+function show() {
+    question.innerHTML = questions[count].question;
+    for(let i = 0; i < questions[count].answers.length; i++) {
+        answers.innerHTML += "<input type='radio' name='answer' value=' " + i + "'>" + questions[count].answers[i] + "<br>";
+    }
+}
+
+// function to hide
+
+function hide() {
+    answers.innerHTML = "";
+}
 
 
+
+
+
+// todo: function that checks answers
+
+
+// todo: test out function with event listener for starting...
