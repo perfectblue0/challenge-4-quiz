@@ -83,7 +83,7 @@ function setTime() {
     }, 1000);
 }
 
-// function to hide and show questions/options
+// function to hide and show questions/options 
 
 function show() {
     question.innerHTML = questions[count].question;
@@ -92,22 +92,33 @@ function show() {
     }
 }
 
-// function to hide
+
+
+// functions to hide
 
 function hide() {
     answers.innerHTML = "";
 }
 
+// will be used to hide all elements and show scores once called
 
+function changeHidden(newPage) {
+    score.style.display = "none";
+    quiz.style.display = "none";
+    begin.style.display = "none";
+    newPage.style.display = "block";
+}
 
 
 
 // todo: function that checks answers
 
 
-// event listener for starting...timer works!!!
+// event listener for starting...timer works, question is shown!!!
 
 beginBtn.addEventListener("click", function () {
     setTime();
     show();
+    changeHidden(quiz);
 })
+

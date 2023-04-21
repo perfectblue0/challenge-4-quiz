@@ -1,72 +1,8 @@
 body {
     display: flex;
-    flex-direction: column;
-    
     font-family: monospace;
     color:rgb(213, 86, 6);
 
 
-}
-
-header {
-    display: flex;
-    justify-content: center;
-}
-
-/* styles the start page elements */
-
-.header {
-
-    font-size: 30px;
-    color: black;
-    font-weight: bold;
-    padding-top: 40px;
-    padding-bottom: 50px;
-    text-align: center;
-}
-
-.quiz {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    
-}
-
-.instruct {
-    text-align: center;
-    padding: 20px 10%;
-}
-
-/* styles the start button during different states */
-
-button {
-    font-size: 20px;
-    letter-spacing: 2px;
-    font-weight: bold;
-    color: white;
-    background-color: rgb(64, 0, 128);
-    border-radius: 7px;
-    padding: 10px;
-    margin: 10px auto;
-}
-
-button:hover {
-    font-style: italic;
-    color: greenyellow;
-}
-
-/* style the score block p element */
-
-#score-block {
-    display: flex;
-    justify-content: center;
-    padding-top: 50px;
-}
-
-
-/* hides all the quiz elements on intial load */
-
-.hide {
-    display: none;
 }
 
