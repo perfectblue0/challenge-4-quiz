@@ -71,7 +71,7 @@ var time = 50;
 
 // todo: timer that counts down and clears when game ends
 
-function time() {
+function setTime() {
     var strTime = setInterval(function() {
         time--;
         document.querySelector("#time").innerHTML = time;
@@ -105,4 +105,9 @@ function hide() {
 // todo: function that checks answers
 
 
-// todo: test out function with event listener for starting...
+// event listener for starting...timer works!!!
+
+beginBtn.addEventListener("click", function () {
+    setTime();
+    show();
+})
