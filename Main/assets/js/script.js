@@ -1,15 +1,3 @@
-// element variables
-
-var startButton = document.querySelector('#start-button');
-
-
-// global variables for functions
-
-var questionIndex;
-var score = 0;
-var timeLeft = 100;
-var highScores = [];
-
 // array of questions, answers, and correnct answer index
 
 var questions = [
@@ -66,43 +54,17 @@ var questions = [
 
 ];
 
-
-
-function startGame() {
-    //timer function here
-    questionIndex = 0;
-    loadQuestions();
-}
-
-// functions:
-
-
-// To do: declare function declaration that decreases time
-
-
-// To do: function to show question
-
-// To do: function that shows next question
-function loadQuestions() {
-    
-}
+var begin = document.querySelector("#begin");
+var beginBtn = document.querySelector("#begin-btn");
+var quiz = document.querySelector("#box-1");
+var score = document.querySelector("#highScore");
+var question = document.querySelector(".question");
+var options = document.querySelector(".options");
+//todo: result?
+var radioButton = document.querySelectorAll("input[name='option']");
+//todo: how to submit answer?
+var scoreBtn = document.querySelector("#highScore");
+var playAgain = document.querySelector("#again");
 
 
 
-// event listeners:
-
-
-
-// event listener that calls function that hides elements and shows others on startbutton click
-
-startButton.addEventListener("click", function() {
-    document.querySelector("#box-1").setAttribute("class", "hide");
-    document.querySelector("#initial-page").setAttribute("class", "hide");
-    document.querySelector("#quiz-block").setAttribute("class", "");
-
-    questionIndex = 0;
-    loadQuestions();
-
-
-    // to do: call function to begin decreasing time
-});
