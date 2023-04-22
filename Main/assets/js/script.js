@@ -60,7 +60,6 @@ var quiz = document.querySelector("#box-1");
 var score = document.querySelector("#highScore");
 var quest = document.querySelector(".question");
 var options = document.querySelector(".options");
-//todo: result?
 var radioButton = document.querySelectorAll("input[name='option']");
 //todo: how to submit answer?
 var scoreBtn = document.querySelector("#highScore");
@@ -94,7 +93,7 @@ function show() {
 
 
 
-// functions to hide
+// functions to hide (maybe move this over to changeHidden)
 
 function hide() {
     options.innerHTML = "";
@@ -111,8 +110,24 @@ function changeHidden(newPage) {
 
 
 
+
+
 // todo: function that checks answers
 
+function inspect() {
+    var optionBtn = document.querySelectorAll("input[name='answer']");
+    for(optionBtn of optionBtn) {
+        if(optionBtn.checked) {
+            if(optionBtn.value == questions[count].correctAnswer) {
+                score += 10;
+            } else {
+                time -= 10;
+            }
+        }
+            
+    }
+    
+}
 
 // event listener for starting...timer works, question is shown!!!
 
@@ -120,5 +135,25 @@ beginBtn.addEventListener("click", function () {
     setTime();
     show();
     changeHidden(quiz);
-})
+});
+
+// event listener that checks answers...
+
+options.addEventListener("click", function() {
+    inspect();
+    hide();
+
+    if (count == questions.length) {
+        var user = prompt("To save your score write your name");
+        localStorage.setItem(user, score);
+        var userScore = document.createElement("li");
+        userScore.innerHTML = (user + " Final Score " + score);
+        score.children[0].appendChild(userScore);
+        changeHidden(score);
+    } else {
+        show();
+    }
+});
+
+changeHidden(begin);
 
