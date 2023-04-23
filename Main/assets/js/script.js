@@ -65,6 +65,7 @@ var radioButton = document.querySelectorAll("input[name='option']");
 var scoreBtn = document.querySelector("#highScore");
 var playAgain = document.querySelector("#again");
 
+scoreBtn = 0;
 var count = 0;
 var time = 50;
 
@@ -118,12 +119,14 @@ function changeHidden(newPage) {
 function inspect() {
     var optionBtn = document.querySelectorAll("input[name='answer']");
     for(optionBtn of optionBtn) {
+        
         if(optionBtn.checked) {
             if(optionBtn.value == questions[count].correctAnswer) {
-                scoreBtn += 10;
+                scoreBtn++;
             } else {
                 time -= 10;
             } count++;
+            console.log(scoreBtn);
         }
             
     }
@@ -136,6 +139,7 @@ beginBtn.addEventListener("click", function () {
     setTime();
     show();
     changeHidden(quiz);
+
 });
 
 // event listener that checks answers...
@@ -144,6 +148,7 @@ options.addEventListener("click", function() {
     inspect();
     hide();
 
+
     if (count == questions.length) {
         var user = prompt("To save your score write your name");
         localStorage.setItem(user, scoreBtn);
@@ -151,6 +156,7 @@ options.addEventListener("click", function() {
         userScore.innerHTML = (user + " Final Score " + scoreBtn);
         scoreBtn.children[0].appendChild(userScore);
         changeHidden(scoreBtn);
+        changeHidden(playAgain);
     } else {
         show();
     }
