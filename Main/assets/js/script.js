@@ -57,11 +57,11 @@ var questions = [
 var begin = document.querySelector("#begin");
 var beginBtn = document.querySelector("#begin-btn");
 var quiz = document.querySelector("#box-1");
-var score = document.querySelector("#highScore");
+
 var quest = document.querySelector(".question");
 var options = document.querySelector(".options");
 var radioButton = document.querySelectorAll("input[name='option']");
-//todo: how to submit answer?
+
 var scoreBtn = document.querySelector("#highScore");
 var playAgain = document.querySelector("#again");
 
@@ -82,7 +82,7 @@ function setTime() {
     }, 1000);
 }
 
-// function to hide and show questions/options 
+// function to show questions/options 
 
 function show() {
     quest.innerHTML = questions[count].question;
@@ -90,6 +90,7 @@ function show() {
         options.innerHTML += "<input type='radio' name='answer' value=' " + i + "'>" + questions[count].answers[i] + "<br>";
     }
 }
+
 
 
 
@@ -102,7 +103,7 @@ function hide() {
 // will be used to hide all elements and show scores once called
 
 function changeHidden(newPage) {
-    score.style.display = "none";
+    
     quiz.style.display = "none";
     begin.style.display = "none";
     newPage.style.display = "block";
@@ -119,10 +120,10 @@ function inspect() {
     for(optionBtn of optionBtn) {
         if(optionBtn.checked) {
             if(optionBtn.value == questions[count].correctAnswer) {
-                score += 10;
+                scoreBtn += 10;
             } else {
                 time -= 10;
-            }
+            } count++;
         }
             
     }
@@ -145,15 +146,15 @@ options.addEventListener("click", function() {
 
     if (count == questions.length) {
         var user = prompt("To save your score write your name");
-        localStorage.setItem(user, score);
+        localStorage.setItem(user, scoreBtn);
         var userScore = document.createElement("li");
-        userScore.innerHTML = (user + " Final Score " + score);
-        score.children[0].appendChild(userScore);
-        changeHidden(score);
+        userScore.innerHTML = (user + " Final Score " + scoreBtn);
+        scoreBtn.children[0].appendChild(userScore);
+        changeHidden(scoreBtn);
     } else {
         show();
     }
 });
 
-changeHidden(begin);
+//changeHidden(begin);
 
