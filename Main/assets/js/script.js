@@ -63,16 +63,27 @@ var radioButton = document.querySelectorAll("input[name='option']");
 var scoreBtn = document.querySelector("#highScore");
 var playAgain = document.querySelector("#again");
 var timeDisplay = document.querySelector("#time");
+var subForm = document.querySelector('.submitForm');
+var results = document.querySelector('.results');
 
 var finalScore = document.createElement('p');
 var formScore = document.createElement('form');
-var subForm = document.querySelector('.submitForm');
-var results = document.querySelector('.results');
+var scoreList = document.createElement('ol');
+var submitBtn = document.createElement('button');
+var inputForm = document.createElement('input');
 
 scoreBtn = 0;
 var count = 0;
 var time = 50;
 var finalScoreArr = [];
+
+// function that shows final score
+
+function final() {
+    time = 0;
+    finalScore.innerText = "Final Score is: " + scoreBtn;
+    
+}
 
 // todo: timer that counts down and clears when game ends
 
@@ -130,9 +141,12 @@ function inspect() {
         if(optionBtn.checked) {
             if(optionBtn.value == questions[count].correctAnswer) {
                 scoreBtn++;
+                results.textContent = "Bien Hecho";
             } else {
                 time -= 10;
+                results.textContent = "Incorrecto";
             } count++;
+            hide();
             console.log(scoreBtn);
         }
             
@@ -140,13 +154,7 @@ function inspect() {
     
 }
 
-// function that shows final score
 
-function final() {
-    time = 0;
-    finalScore.innerText = "Final Score is: " + scoreBtn;
-    
-}
 
 
 
@@ -164,15 +172,12 @@ beginBtn.addEventListener("click", function () {
 
 options.addEventListener("click", function() {
     inspect();
-    hide();
+    
 
 
     if (count == questions.length) {
         var user = prompt("To save your score write your name");
-        localStorage.setItem(user, scoreBtn);
-        var userScore = document.createElement("li");
-        userScore.innerHTML = (user + " Final Score " + scoreBtn);
-        scoreBtn.children[0].appendChild(userScore);
+        
         changeHidden(scoreBtn);
         changeHidden(playAgain);
     } else {
