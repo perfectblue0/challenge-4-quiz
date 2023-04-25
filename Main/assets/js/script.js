@@ -80,10 +80,15 @@ var finalScoreArr = [];
 // function that shows final score
 
 function final() {
-    time = 0;
+    time = "";
+    results.textContent = "";
     finalScore.innerText = "Final Score is: " + scoreBtn;
-    
+    results.appendChild(finalScore);
 }
+
+
+
+
 
 // todo: timer that counts down and clears when game ends
 
@@ -176,8 +181,8 @@ options.addEventListener("click", function() {
 
 
     if (count == questions.length) {
-        var user = prompt("To save your score write your name");
-        
+        final();
+        hide();
         changeHidden(scoreBtn);
         changeHidden(playAgain);
     } else {
