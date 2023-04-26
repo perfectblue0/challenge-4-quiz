@@ -77,6 +77,38 @@ var count = 0;
 var time = 50;
 var finalScoreArr = [];
 
+
+
+// event listener that calls functions to check answers and hide elements if conditions are met, create form for user name and submit button
+
+options.addEventListener("click", function() {
+    inspect();
+    if (count == questions.length) {
+        final();
+        hide();
+
+        var scoreBox = document.createElement("input");
+        subForm.append(scoreBox);
+
+        submitBtn.textContent = "Submit";
+        subForm.append(submitBtn);
+
+        submitBtn.addEventListener("click", function () {
+            if (scoreBox.value.length === 0) {
+                return false;
+            }
+            function saveUser(...input) {
+                var info = JSON.stringify({"user": input[0], "score": input[1]})
+                localStorage.setItem("object", info)
+            }
+            saveUser(scoreBox.value, scoreBtn);
+        })
+        
+    } else {
+        show();
+    }
+});
+
 // function that shows final score
 
 function final() {
@@ -85,6 +117,8 @@ function final() {
     finalScore.innerText = "Final Score is: " + scoreBtn;
     results.appendChild(finalScore);
 }
+
+// event listener that shows previous scores
 
 
 
@@ -173,21 +207,4 @@ beginBtn.addEventListener("click", function () {
 
 });
 
-// event listener that checks answers... need to do this over
-
-options.addEventListener("click", function() {
-    inspect();
-    
-
-
-    if (count == questions.length) {
-        final();
-        hide();
-        
-    } else {
-        show();
-    }
-});
-
-//changeHidden(begin);
 
