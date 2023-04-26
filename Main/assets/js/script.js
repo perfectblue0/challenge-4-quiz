@@ -130,7 +130,7 @@ function changeHidden(newPage) {
     
     quiz.style.display = "none";
     begin.style.display = "none";
-    newPage.style.display = "block";
+    newPage.style.display = "flex";
 }
 
 
@@ -183,8 +183,7 @@ options.addEventListener("click", function() {
     if (count == questions.length) {
         final();
         hide();
-        changeHidden(scoreBtn);
-        changeHidden(playAgain);
+        
     } else {
         show();
     }
