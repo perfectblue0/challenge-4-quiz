@@ -65,6 +65,7 @@ var playAgain = document.querySelector("#again");
 var timeDisplay = document.querySelector("#time");
 var subForm = document.querySelector('.submitForm');
 var results = document.querySelector('.results');
+// need to add query selector for scores id on line 14
 
 var finalScore = document.createElement('p');
 var formScore = document.createElement('form');
@@ -92,22 +93,22 @@ options.addEventListener("click", function() {
 
         submitBtn.textContent = "Submit";
         subForm.append(submitBtn);
-
-        submitBtn.addEventListener("click", function () {
-            if (scoreBox.value.length === 0) {
-                return false;
-            }
-            function saveUser(...input) {
-                var info = JSON.stringify({"user": input[0], "score": input[1]})
-                localStorage.setItem("object", info)
-            }
-            saveUser(scoreBox.value, scoreBtn);
-        })
         
     } else {
         show();
     }
 });
+
+// function to get results from local storage!
+
+function getSrs() {
+    var savedScores = JSON.parse(localStorage.getItem("scoreBtn"));
+
+    if (savedScores !== null) {
+        finalScoreArr = savedScores;
+    }
+}
+// todo: create event listener to #scoreButton to show list of previous user name and scores
 
 // function that shows final score
 
@@ -118,20 +119,40 @@ function final() {
     results.appendChild(finalScore);
 }
 
-// event listener that shows previous scores
+// event listener to save score
 
+submitBtn.addEventListener("click", function(e) {
+    e.preventDefault();
 
+    var scText = inputForm.value.trim() + " - " + scoreBtn;
 
+    if (scText === "") {
+        return;
+    } else {
+       
+        getSrs();
+        finalScoreArr.push(scText);
 
+        saveScr();
+        // need function to get results of past scores! 
+    }
+})
 
-// todo: timer that counts down and clears when game ends
+// function that saves scores in local storage!
+
+function saveScr() {
+    localStorage.setItem("scoreBtn", JSON.stringify(finalScoreArr));
+
+}
+
+// timer that counts down and clears when game ends
 
 function setTime() {
     var strTime = setInterval(function() {
         time--;
         document.querySelector("#time").innerHTML = time;
         if(time === 0 || count == questions.length) {
-            document.querySelector("#time").innerHTML = "00";
+            document.querySelector("#time").innerHTML = "";
             clearInterval(strTime);
             // change to end screen with function
         }
