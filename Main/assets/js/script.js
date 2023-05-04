@@ -61,7 +61,6 @@ var contentBox = document.querySelector(".contentBox");
 var beginQ = document.querySelector(".startBtn");
 
 var secondsLeft = document.querySelector(".seconds");
-
 var textBox = docmument.querySelector(".text-box");
 var choicesBox = document.querySelector(".choices");
 
@@ -80,3 +79,25 @@ var indexQuestion;
 var remainTime = 100;
 var points = 0;
 var arrayScore = [];
+
+// function to start timer
+
+
+// todo: function to start quiz
+
+// todo: function to show next question
+
+// todo: function to evaluate if answer right
+
+// todo: function to show final result score
+
+// todo: function to store result
+
+// todo: functin to clear history of scores
+
+// todo: function to hide elements
+
+// todo: event listeners
+
+
+
