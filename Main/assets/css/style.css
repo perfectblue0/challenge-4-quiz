@@ -2,7 +2,23 @@ body {
     display: flex;
     font-family: monospace;
     color:rgb(213, 86, 6);
+    margin: 30px;
+    flex-direction: column;
+}
 
+.scoresNTime {
+    display: flex;
+    justify-content: space-around;
+}
+
+.contentBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
 }
 
+.startBtn {
+    width: min-content;
+    padding: 10px 5px;
+}
