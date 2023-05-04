@@ -8,12 +8,23 @@
     <link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
   </head>
   <body>
-
-    <!--this has the score and the time-->
-    
-
-    <!--this contains quesitons and possible answers-->
-    
+    <header class="scoresNTime">
+      <!--might put event listener in js file or function here...in first h3-->
+      <h3>Past Scores</h3>
+      <h3 class="seconds">Seconds Left:</h3>
+    </header>
+    <section class="contentBox">
+      <h1>Mexican State Capital Quiz</h1>
+      <h4 class="text-box">Try to answer the following questions within the time limit. Keep in mind that incorrect answers will penalize your time by 10 seconds.</h4>
+      <div class="choices">
+      </div>
+      <div class="scoreForm"></div>
+      <!--might put event listener for start and change display...in button-->
+      <button class="startBtn">Begin!</button>
+    </section>
+    <section class="end">
+      <p class="outputSelection"></p>
+    </section>
     <script src="assets/js/script.js"></script>
   </body>
 </html>
