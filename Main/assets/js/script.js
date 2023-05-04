@@ -54,3 +54,29 @@ var questions = [
 
 ];
 
+// selectors!
+
+var scoresNTime = document.querySelector(".scoresNTime");
+var contentBox = document.querySelector(".contentBox");
+var beginQ = document.querySelector(".startBtn");
+
+var secondsLeft = document.querySelector(".seconds");
+
+var textBox = docmument.querySelector(".text-box");
+var choicesBox = document.querySelector(".choices");
+
+var formSub = document.querySelector(".form-submit");
+var outPutSelection = document.querySelector(".outputSelection");
+
+var scoreResult = document.createElement("p");
+var nameForm = document.createElement("form");
+var scoreLi = document.createElement("ol");
+var buttonSubmit = document.createElement("button");
+var inputForm = document.createElement("input");
+
+// default logic variables
+
+var indexQuestion;
+var remainTime = 100;
+var points = 0;
+var arrayScore = [];
