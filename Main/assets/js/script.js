@@ -61,7 +61,7 @@ var contentBox = document.querySelector(".contentBox");
 var beginQ = document.querySelector(".startBtn");
 
 var secondsLeft = document.querySelector(".seconds");
-var textBox = docmument.querySelector(".text-box");
+var textBox = document.querySelector(".text-box");
 var choicesBox = document.querySelector(".choices");
 
 var formSub = document.querySelector(".form-submit");
@@ -80,11 +80,29 @@ var remainTime = 100;
 var points = 0;
 var arrayScore = [];
 
-// function to start timer
-
+// function to start timer (works)
+function startSeconds() {
+    var secondsInterval = setInterval(function() {
+        remainTime--;
+        if (remainTime < 0) {
+            remainTime = 0;
+        }
+       secondsLeft.textContent = `Seconds Left ${remainTime}`;
+       if (remainTime <= 0) {
+        clearInterval(secondsInterval);
+       // return final result score function 
+       }
+    }, 1000)
+}
 
 // todo: function to start quiz
+function startTQuiz() {
+    startSeconds();
+    indexQuestion = 0;
+    beginQ.style.display = 'none';
+}
 
+beginQ.addEventListener("click", startTQuiz);
 // todo: function to show next question
 
 // todo: function to evaluate if answer right
