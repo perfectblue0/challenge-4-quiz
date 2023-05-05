@@ -100,10 +100,30 @@ function startTQuiz() {
     startSeconds();
     indexQuestion = 0;
     beginQ.style.display = 'none';
+    nextQuest();
 }
 
+// event listener for Begin button that starts quiz
 beginQ.addEventListener("click", startTQuiz);
+
+// todo: function to show question
+function displayQuestion(quest) {
+    if (indexQuestion >= questions.length) {
+        remainTime = 0;
+        return;
+    }
+    textBox.innerText = quest.question;
+    quest.answers.forEach(answer => {
+        var btn = document.createElement("button");
+        btn.innerText = answer;
+        choicesBox.appendChild(btn);
+    });
+};
+
 // todo: function to show next question
+function nextQuest() {
+    displayQuestion(questions[indexQuestion]);
+}
 
 // todo: function to evaluate if answer right
 
