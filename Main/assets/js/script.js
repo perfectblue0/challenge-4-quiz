@@ -9,7 +9,7 @@ var questions = [
             "Guanajuato",
             "Aguascalientes",
         ],
-        correctAnswer: 3
+        correctAnswer: "Aguascalientes"
     },
     {
         question: "What is the capital of Durango?",
@@ -19,7 +19,7 @@ var questions = [
             "Guadalajara",
             "Morelia",
         ],
-        correctAnswer: 1
+        correctAnswer: "Victoria de Durango"
     },
     {
         question: "What is the capital of Nayarit?",
@@ -29,7 +29,7 @@ var questions = [
             "Cuernavaca",
             "Tepic",
         ],
-        correctAnswer: 3
+        correctAnswer: "Tepic"
     },
     {
         question: "What is the capital of Tabasco",
@@ -39,7 +39,7 @@ var questions = [
             "Monterrey",
             "Oaxaca de Juárez",
         ],
-        correctAnswer: 1
+        correctAnswer: "Hermosillo"
     },
     {
         question: "What is the capital of Zacatecas",
@@ -49,13 +49,13 @@ var questions = [
             "Manzanillo",
             "Tijuana",
         ],
-        correctAnswer: 0
+        correctAnswer: "Zacatecas"
     },
 
 ];
 
 // selectors!
-
+var titleTest = document.querySelector(".title-test");
 var scoresNTime = document.querySelector(".scoresNTime");
 var contentBox = document.querySelector(".contentBox");
 var beginQ = document.querySelector(".startBtn");
@@ -95,18 +95,19 @@ function startSeconds() {
     }, 1000)
 }
 
-// todo: function to start quiz
+// function to start quiz
 function startTQuiz() {
     startSeconds();
     indexQuestion = 0;
-    beginQ.style.display = 'none';
+    beginQ.style.display = "none";
+    titleTest.style.display = "none";
     nextQuest();
 }
 
 // event listener for Begin button that starts quiz
 beginQ.addEventListener("click", startTQuiz);
 
-// todo: function to show question
+// function to show question
 function displayQuestion(quest) {
     if (indexQuestion >= questions.length) {
         remainTime = 0;
@@ -120,12 +121,32 @@ function displayQuestion(quest) {
     });
 };
 
-// todo: function to show next question
+// function to show next question
 function nextQuest() {
     displayQuestion(questions[indexQuestion]);
 }
 
 // todo: function to evaluate if answer right
+function evalAnswer(picked, right) {
+    return picked === right;
+}
+
+// todo: event listener that uses evalAnswer on click
+choicesBox.addEventListener("click", function(e) {
+    var evaluated = (evalAnswer(e.target.textContent, questions[indexQuestion].correctAnswer))
+    if (evaluated) {
+        points++;
+        console.log(points);
+        outPutSelection = "Bien Hecho";
+    } else {
+        remainTime-=10;
+        console.log(points);
+        outPutSelection = "Nimodo";
+    }
+    indexQuestion++;
+    blankBtns();
+    return nextQuest();
+})
 
 // todo: function to show final result score
 
@@ -134,7 +155,12 @@ function nextQuest() {
 // todo: functin to clear history of scores
 
 // todo: function to hide elements
-
+function blankBtns() {
+    var mBtn = document.querySelectorAll("button");
+    for (button of mBtn) {
+        button.remove();
+    }
+}
 // todo: event listeners
 
 
