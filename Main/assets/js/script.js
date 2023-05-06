@@ -90,7 +90,7 @@ function startSeconds() {
        secondsLeft.textContent = `Seconds Left ${remainTime}`;
        if (remainTime <= 0) {
         clearInterval(secondsInterval);
-       // return final result score function 
+       displayFinalPoints(); 
        }
     }, 1000)
 }
@@ -149,12 +149,21 @@ choicesBox.addEventListener("click", function(e) {
 })
 
 // todo: function to show final result score
+function displayFinalPoints() {
+    blankBtns();
+    remainTime = 0;
+    textBox.style.display = "none";
+    scoreResult.innerText = "You scored: " + points;
+    choicesBox.appendChild(scoreResult);
+    outPutSelection.textContent = '';
+    // todo: function to display form to write in and save name
 
+}
 // todo: function to store result
 
-// todo: functin to clear history of scores
+// todo: function to clear history of scores
 
-// todo: function to hide elements
+// function to reset question for next action
 function blankBtns() {
     var mBtn = document.querySelectorAll("button");
     for (button of mBtn) {
