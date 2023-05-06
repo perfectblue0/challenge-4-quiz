@@ -80,6 +80,31 @@ var remainTime = 100;
 var points = 0;
 var arrayScore = [];
 
+// function to view past points and names
+
+// function that adds return to main page and clear score button
+function addRetClearBtn() {
+    var navBack = document.createElement("button");
+    var scoreClear = document.createElement("button");
+    navBack.textContent = "Return to Main";
+    scoreClear.textContent = "Clear All";
+    formSub.appendChild(navBack);
+    formSub.appendChild(scoreClear);
+    navBack.addEventListener("click", pageReload);
+    navBack.addEventListener("click", clearPointsHistory);
+}
+
+// function refresh page
+function pageReload() {
+    location.reload();
+}
+
+// function to clear past score history
+function clearPointsHistory() {
+    localStorage.clear();
+    arrayScore.remove();
+}
+
 // function to start timer (works)
 function startSeconds() {
     var secondsInterval = setInterval(function() {
@@ -146,7 +171,7 @@ choicesBox.addEventListener("click", function(e) {
     indexQuestion++;
     blankBtns();
     return nextQuest();
-})
+});
 
 // todo: function to show final result score
 function displayFinalPoints() {
@@ -171,7 +196,34 @@ function displayFormNBtn() {
     formSub.appendChild(nameForm);
 }
 
-// todo: function to store result
+// todo: function to save result in localStorage
+function resultsSave() {
+    localStorage.setItem("points", JSON.stringify(arrayScore));
+}
+
+// todo: event listener that shows save btn and form to save score
+buttonSubmit.addEventListener("click", function(e) {
+    e.preventDefault();
+    var textPoints = inputForm.value.trim() + ' - ' + points;
+    if (textPoints === '') {
+        return
+    } else {
+        arrayScore.push(textPoints);
+        resultsSave();
+        
+        //function to get points
+        retrievePoints();
+        //function to view past scores list
+
+    }
+})
+// todo: function to get scores from localStorage
+function retrievePoints() {
+    var savedPoints = JSON.parse(localStorage.getItem("points"));
+    if (savedPoints !== null) {
+        arrayScore = savedPoints;
+    }
+}
 
 // todo: function to clear history of scores
 
