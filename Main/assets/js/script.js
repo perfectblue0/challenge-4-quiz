@@ -81,6 +81,23 @@ var points = 0;
 var arrayScore = [];
 
 // function to view past points and names
+function pastPointsDisplay() {
+    addRetClearBtn();
+    scoresNTime.style.visibility = "hidden";
+    textBox.innerText = "Past Names and Scores";
+    scoreResult.remove();
+    nameForm.remove();
+    for (var i = 0; i < arrayScore.length; i++) {
+        var userEntry = arrayScore[i];
+        var list = document.createElement("li");
+        list.textContent = userEntry;
+        list.setAttribute("data-index", i);
+        scoreLi.appendChild(list);
+        choicesBox.appendChild(scoreLi);
+    }
+    choicesBox.appendChild(scoreLi);
+    
+}
 
 // function that adds return to main page and clear score button
 function addRetClearBtn() {
@@ -156,7 +173,7 @@ function evalAnswer(picked, right) {
     return picked === right;
 }
 
-// todo: event listener that uses evalAnswer on click
+// event listener that uses evalAnswer on click
 choicesBox.addEventListener("click", function(e) {
     var evaluated = (evalAnswer(e.target.textContent, questions[indexQuestion].correctAnswer))
     if (evaluated) {
@@ -173,7 +190,7 @@ choicesBox.addEventListener("click", function(e) {
     return nextQuest();
 });
 
-// todo: function to show final result score
+// function to show final result score
 function displayFinalPoints() {
     blankBtns();
     remainTime = 0;
@@ -196,36 +213,31 @@ function displayFormNBtn() {
     formSub.appendChild(nameForm);
 }
 
-// todo: function to save result in localStorage
+// function to save result in localStorage
 function resultsSave() {
     localStorage.setItem("points", JSON.stringify(arrayScore));
 }
 
-// todo: event listener that shows save btn and form to save score
+// event listener that shows save btn and form to save score
 buttonSubmit.addEventListener("click", function(e) {
     e.preventDefault();
     var textPoints = inputForm.value.trim() + ' - ' + points;
     if (textPoints === '') {
         return
     } else {
+        retrievePoints();
         arrayScore.push(textPoints);
         resultsSave();
-        
-        //function to get points
-        retrievePoints();
-        //function to view past scores list
-
+        pastPointsDisplay();
     }
 })
-// todo: function to get scores from localStorage
+// function to get scores from localStorage
 function retrievePoints() {
     var savedPoints = JSON.parse(localStorage.getItem("points"));
     if (savedPoints !== null) {
         arrayScore = savedPoints;
     }
 }
-
-// todo: function to clear history of scores
 
 // function to reset question for next action
 function blankBtns() {
@@ -234,7 +246,6 @@ function blankBtns() {
         button.remove();
     }
 }
-// todo: event listeners
 
 
 
