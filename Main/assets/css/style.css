@@ -22,3 +22,13 @@ body {
     width: min-content;
     padding: 10px 5px;
 }
+
+.choices {
+    display: flex;
+    flex-direction: column;
+    margin: 30px;
+}
+
+.choices button {
+    margin: 20px;
+}
