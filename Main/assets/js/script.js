@@ -59,6 +59,7 @@ var titleTest = document.querySelector(".title-test");
 var scoresNTime = document.querySelector(".scoresNTime");
 var contentBox = document.querySelector(".contentBox");
 var beginQ = document.querySelector(".startBtn");
+var pScores = document.querySelector(".pScores");
 
 var secondsLeft = document.querySelector(".seconds");
 var textBox = document.querySelector(".text-box");
@@ -77,12 +78,15 @@ var inputForm = document.createElement("input");
 
 var indexQuestion;
 var remainTime = 100;
-var points = 0;
+var point = 0;
 var arrayScore = [];
 
 // function to view past points and names
 function pastPointsDisplay() {
-    addRetClearBtn();
+    var navBack = document.createElement("button");
+    var scoreClear = document.createElement("button");
+    retrievePoints();
+    blankBtns();
     scoresNTime.style.visibility = "hidden";
     textBox.innerText = "Past Names and Scores";
     scoreResult.remove();
@@ -91,25 +95,21 @@ function pastPointsDisplay() {
         var userEntry = arrayScore[i];
         var list = document.createElement("li");
         list.textContent = userEntry;
-        list.setAttribute("data-index", i);
+        list.setAttribute('data-index', i);
         scoreLi.appendChild(list);
         choicesBox.appendChild(scoreLi);
     }
     choicesBox.appendChild(scoreLi);
-    
-}
-
-// function that adds return to main page and clear score button
-function addRetClearBtn() {
-    var navBack = document.createElement("button");
-    var scoreClear = document.createElement("button");
     navBack.textContent = "Return to Main";
     scoreClear.textContent = "Clear All";
     formSub.appendChild(navBack);
     formSub.appendChild(scoreClear);
     navBack.addEventListener("click", pageReload);
-    navBack.addEventListener("click", clearPointsHistory);
+    scoreClear.addEventListener("click", clearPointsHistory);
 }
+
+// function that adds return to main page and clear score button
+
 
 // function refresh page
 function pageReload() {
@@ -119,7 +119,7 @@ function pageReload() {
 // function to clear past score history
 function clearPointsHistory() {
     localStorage.clear();
-    arrayScore.remove();
+    scoreLi.remove();
 }
 
 // function to start timer (works)
@@ -145,6 +145,9 @@ function startTQuiz() {
     titleTest.style.display = "none";
     nextQuest();
 }
+
+// event listener for viewing past scores
+pScores.addEventListener("click", pastPointsDisplay);
 
 // event listener for Begin button that starts quiz
 beginQ.addEventListener("click", startTQuiz);
@@ -177,12 +180,12 @@ function evalAnswer(picked, right) {
 choicesBox.addEventListener("click", function(e) {
     var evaluated = (evalAnswer(e.target.textContent, questions[indexQuestion].correctAnswer))
     if (evaluated) {
-        points++;
-        console.log(points);
+        point++;
+        console.log(point);
         outPutSelection = "Bien Hecho";
     } else {
         remainTime-=10;
-        console.log(points);
+        console.log(point);
         outPutSelection = "Nimodo";
     }
     indexQuestion++;
@@ -195,7 +198,7 @@ function displayFinalPoints() {
     blankBtns();
     remainTime = 0;
     textBox.style.display = "none";
-    scoreResult.innerText = "You scored: " + points;
+    scoreResult.innerText = "You scored: " + point;
     choicesBox.appendChild(scoreResult);
     outPutSelection.textContent = '';
     displayFormNBtn();
@@ -204,7 +207,7 @@ function displayFinalPoints() {
 // function to display form and submit button
 function displayFormNBtn() {
     var labelForm = document.createElement("label");
-    labelForm.innerText = "Type in Name:    ";
+    labelForm.innerText = "Type in Name:";
     buttonSubmit.innerText = "Save";
     buttonSubmit.setAttribute = ("class", "saveBtn");
     nameForm.appendChild(labelForm);
@@ -221,16 +224,16 @@ function resultsSave() {
 // event listener that shows save btn and form to save score
 buttonSubmit.addEventListener("click", function(e) {
     e.preventDefault();
-    var textPoints = inputForm.value.trim() + ' - ' + points;
+    var textPoints = inputForm.value.trim() + ' - ' + point;
     if (textPoints === '') {
-        return
-    } else {
+        return;
+    }
         retrievePoints();
         arrayScore.push(textPoints);
         resultsSave();
         pastPointsDisplay();
-    }
-})
+});
+
 // function to get scores from localStorage
 function retrievePoints() {
     var savedPoints = JSON.parse(localStorage.getItem("points"));
