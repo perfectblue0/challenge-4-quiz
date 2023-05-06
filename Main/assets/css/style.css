@@ -1,15 +1,15 @@
 body {
     display: flex;
+    flex-direction: column;
     font-family:Verdana, Geneva, Tahoma, sans-serif;
     letter-spacing: 3px;
     word-spacing: 4px;
     color: white;
-    
-    flex-direction: column;
     background-image: url(/Main/assets/images/backgroundMX.jpg);
     background-size: cover;
 }
 
+/* styles the current score and time */
 .scoresNTime {
     display: flex;
     justify-content: space-around;
@@ -21,6 +21,7 @@ body {
     border-radius: 8px;
 }
 
+/* styles the colored box with all the text and buttons except scores, time, and whether the player got "nimodo" or "correcto" */
 .contentBox {
     display: flex;
     flex-direction: column;
@@ -39,7 +40,7 @@ button:hover {
 
 .startBtn {
     width: min-content;
-    padding: 10px 5px;
+    padding: 8px 5px;
 }
 
 .text-box {
@@ -56,9 +57,24 @@ button:hover {
     margin: 20px;
 }
 
+/* styles the form where user puts in name to save scores and the save button margin */
+input {
+    margin: 5px;
+}
+
 .pScores {
     margin: 10px;
 }
+
+/* styles the bottom green section where answer evaluation is made and user is notified whether they guessed correctly or not */
+.outputSelection {
+    font-size: 30px;
+    background-color: rgb(3, 88, 3, .5);
+    border-radius: 8px;
+    text-align: center;
+}
+
+/* media query that removes background and changes font for better readablity on smaller screen as well as removes padding of title of player score */
 
 @media screen and (max-width: 350px) {
     body {
@@ -69,5 +85,4 @@ button:hover {
     .pScores {
         padding: 0px;
     }
-
 }

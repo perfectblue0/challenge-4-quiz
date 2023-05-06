@@ -8,19 +8,23 @@
     <link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
   </head>
   <body>
+    <!--this is the top bar that has the past scores link and time-->
     <header class="scoresNTime">
-      <!--might put event listener in js file or function here...in first h3-->
       <button class="pScores">Past Scores</button>
       <h3 class="seconds">Seconds Left:</h3>
     </header>
+    <!--this contains the title, the instructions, will be where the questions and choices will be displayed-->
     <section class="contentBox">
       <h1 class="title-test">Mexican State Capital Quiz</h1>
       <h4 class="text-box">Try to answer the following questions within the time limit. Keep in mind that incorrect answers will penalize your time by 10 seconds.</h4>
       <div class="choices">
       </div>
+      <!--this will store the user name and the points they received-->
       <div class="form-submit"></div>
+      <!--this button initiates the test-->
       <button class="startBtn">Begin!</button>
     </section>
+    <!--this will display evaluated choice, will say "Bien Hecho" for correct and "Nimodo" for a wrong choice-->
     <section class="end">
       <p class="outputSelection"></p>
     </section>

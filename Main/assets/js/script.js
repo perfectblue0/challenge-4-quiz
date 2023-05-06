@@ -85,12 +85,15 @@ var arrayScore = [];
 function pastPointsDisplay() {
     var navBack = document.createElement("button");
     var scoreClear = document.createElement("button");
+
     retrievePoints();
     blankBtns();
+
     scoresNTime.style.visibility = "hidden";
     textBox.innerText = "Past Names and Scores";
     scoreResult.remove();
     nameForm.remove();
+
     for (var i = 0; i < arrayScore.length; i++) {
         var userEntry = arrayScore[i];
         var list = document.createElement("li");
@@ -102,14 +105,13 @@ function pastPointsDisplay() {
     choicesBox.appendChild(scoreLi);
     navBack.textContent = "Return to Main";
     scoreClear.textContent = "Clear All";
+
     formSub.appendChild(navBack);
     formSub.appendChild(scoreClear);
+
     navBack.addEventListener("click", pageReload);
     scoreClear.addEventListener("click", clearPointsHistory);
 }
-
-// function that adds return to main page and clear score button
-
 
 // function refresh page
 function pageReload() {
@@ -126,10 +128,12 @@ function clearPointsHistory() {
 function startSeconds() {
     var secondsInterval = setInterval(function() {
         remainTime--;
+
         if (remainTime < 0) {
             remainTime = 0;
         }
        secondsLeft.textContent = `Seconds Left ${remainTime}`;
+
        if (remainTime <= 0) {
         clearInterval(secondsInterval);
        displayFinalPoints(); 
@@ -140,10 +144,12 @@ function startSeconds() {
 // function to start quiz
 function startTQuiz() {
     startSeconds();
+
     indexQuestion = 0;
     beginQ.style.display = "none";
     titleTest.style.display = "none";
     pScores.style.display = "none";
+
     nextQuest();
 }
 
@@ -163,6 +169,7 @@ function displayQuestion(quest) {
     quest.answers.forEach(answer => {
         var btn = document.createElement("button");
         btn.innerText = answer;
+
         choicesBox.appendChild(btn);
     });
 };
@@ -179,16 +186,16 @@ function evalAnswer(picked, right) {
 
 // event listener that uses evalAnswer on click
 choicesBox.addEventListener("click", function(e) {
-    var evaluated = (evalAnswer(e.target.textContent, questions[indexQuestion].correctAnswer))
+    var evaluated = (evalAnswer(e.target.textContent, questions[indexQuestion].correctAnswer));
+
     if (evaluated) {
         point++;
-        console.log(point);
-        outPutSelection = "Bien Hecho";
+        outPutSelection.textContent = "Bien Hecho";
     } else {
         remainTime-=10;
-        console.log(point);
-        outPutSelection = "Nimodo";
+        outPutSelection.textContent = "Nimodo";
     }
+
     indexQuestion++;
     blankBtns();
     return nextQuest();
@@ -197,20 +204,28 @@ choicesBox.addEventListener("click", function(e) {
 // function to show final result score
 function displayFinalPoints() {
     blankBtns();
+
     remainTime = 0;
     textBox.style.display = "none";
+
     scoreResult.innerText = "You scored: " + point;
+
     choicesBox.appendChild(scoreResult);
+
     outPutSelection.textContent = '';
+
     displayFormNBtn();
 }
 
 // function to display form and submit button
 function displayFormNBtn() {
     var labelForm = document.createElement("label");
+
     labelForm.innerText = "Type in Name:";
     buttonSubmit.innerText = "Save";
+
     buttonSubmit.setAttribute = ("class", "saveBtn");
+
     nameForm.appendChild(labelForm);
     nameForm.appendChild(inputForm);
     nameForm.appendChild(buttonSubmit);
@@ -226,18 +241,23 @@ function resultsSave() {
 buttonSubmit.addEventListener("click", function(e) {
     e.preventDefault();
     var textPoints = inputForm.value.trim() + ' - ' + point;
+
     if (textPoints === '') {
         return;
     }
         retrievePoints();
+
         arrayScore.push(textPoints);
+
         resultsSave();
+
         pastPointsDisplay();
 });
 
 // function to get scores from localStorage
 function retrievePoints() {
     var savedPoints = JSON.parse(localStorage.getItem("points"));
+
     if (savedPoints !== null) {
         arrayScore = savedPoints;
     }
@@ -246,6 +266,7 @@ function retrievePoints() {
 // function to reset question for next action
 function blankBtns() {
     var mBtn = document.querySelectorAll("button");
+    
     for (button of mBtn) {
         button.remove();
     }
