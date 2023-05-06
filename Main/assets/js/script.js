@@ -143,6 +143,7 @@ function startTQuiz() {
     indexQuestion = 0;
     beginQ.style.display = "none";
     titleTest.style.display = "none";
+    pScores.style.display = "none";
     nextQuest();
 }
 
