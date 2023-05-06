@@ -156,9 +156,21 @@ function displayFinalPoints() {
     scoreResult.innerText = "You scored: " + points;
     choicesBox.appendChild(scoreResult);
     outPutSelection.textContent = '';
-    // todo: function to display form to write in and save name
-
+    displayFormNBtn();
 }
+
+// function to display form and submit button
+function displayFormNBtn() {
+    var labelForm = document.createElement("label");
+    labelForm.innerText = "Type in Name:    ";
+    buttonSubmit.innerText = "Save";
+    buttonSubmit.setAttribute = ("class", "saveBtn");
+    nameForm.appendChild(labelForm);
+    nameForm.appendChild(inputForm);
+    nameForm.appendChild(buttonSubmit);
+    formSub.appendChild(nameForm);
+}
+
 // todo: function to store result
 
 // todo: function to clear history of scores
