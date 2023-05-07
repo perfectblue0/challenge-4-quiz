@@ -5,8 +5,6 @@ body {
     letter-spacing: 3px;
     word-spacing: 4px;
     color: white;
-    background-image: url("/assets/images/backgroundMX.jpg");
-    background-size: cover;
 }
 
 /* styles the current score and time */
@@ -78,7 +76,6 @@ input {
 
 @media screen and (max-width: 350px) {
     body {
-        background-image: none;
         font-family: Arial, Helvetica, sans-serif;
     }
 
