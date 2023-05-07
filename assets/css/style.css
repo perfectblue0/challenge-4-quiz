@@ -5,7 +5,7 @@ body {
     letter-spacing: 3px;
     word-spacing: 4px;
     color: white;
-    background-image: url(/Main/assets/images/backgroundMX.jpg);
+    background-image: url("/assets/images/backgroundMX.jpg");
     background-size: cover;
 }
 
