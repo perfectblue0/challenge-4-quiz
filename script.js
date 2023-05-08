@@ -193,7 +193,7 @@ choicesBox.addEventListener("click", function(e) {
         outPutSelection.textContent = "Bien Hecho";
     } else {
         remainTime-=10;
-        outPutSelection.textContent = "Nimodo";
+        outPutSelection.textContent = "Ni modo";
     }
 
     indexQuestion++;
