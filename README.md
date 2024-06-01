@@ -2,7 +2,7 @@
 
 ## Description
 
-I created this application to practice using localStorage, JavaScript, responsive CSS styling, and HTML. Depending on where a user clicks, this project gets previous scores, removes elements and generates buttons and forms  along with new text, saves user’s final points as well as deletes previous data users have stored. I learned about the importance of programming with comments and using DevTools to debug issues with JavaScript and CSS styling.
+This application is a timed quiz on Mexican State Capitals that uses JavaScript to: subtract time from the clock if users select the incorrect option, adds points when users select the correct option, and provides the option to save a user’s final score when the game ends or delete the score history. This application runs in the browser and has dynamically updated HTML and CSS through JavaScript as well. I learned about the importance of programming with comments and using DevTools to debug issues with JavaScript and CSS styling.
 
 ## Usage
 To use this application users can navigate to the application by clicking on the first link this; to visit the application’s repo, click on the second link:
